@@ -1,0 +1,28 @@
+<%- include("header") -%>
+    <div class="box" id="heading">
+       <h1><%= listTitle %></h1> 
+    </div>
+    <div class="box">
+        <% dolist.forEach(function(item){%>
+            <form action="/delete" method="post">
+                <li class="item">
+                    <input type="checkbox" name="checkbox" value="<%= item._id %>" onchange="this.form.submit()">
+                    <p><%=item.name%></p>
+                </li>
+                <input type="hidden" name="ListName" value="<%=listTitle%>">
+            </form>
+        <%})%>
+
+
+        <!-- <% for(var i=0;i<dolist.length;i++){ %>
+        <li class="item">
+                <input type="checkbox">
+                <p><%=dolist[i]%></p>
+        </li>
+        <%}%> -->
+        <form action="/" method="post">
+            <input type="text" name="newData" placeholder="Enter new item" autocomplete="off">
+            <button type="submit" name="list" value=<%= listTitle %>>+</button>
+        </form>
+    </div>
+<%- include("footer") -%>
